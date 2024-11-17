@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+// In App.js
+import AdminHome from './components/AdminHome';  // Correct path to the AdminHome component
+import Feeding from './components/Feeding';  // Correct path to the Feeding component
+import Vaccines from './components/Vaccines';  // Correct path to the Vaccines component
+import Sleep from './components/Sleep';  // Correct path to the Sleep component
+import Users from './components/Users';  // Correct path to the Users component
+import Navbar from './components/Navbar';  // Correct path to the Navbar component
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        {/* Navbar displayed on all pages */}
+        <Navbar />
+        <div className="container mx-auto mt-4">
+          <Routes>
+            {/* Home and Admin routes */}
+            <Route path="/" element={<Home />} />
+            <Route path="/admin" element={<AdminHome />} />
+
+            {/* Admin management routes */}
+            <Route path="/vaccines" element={<Vaccines />} />
+            <Route path="/feeding" element={<Feeding />} />
+            <Route path="/sleep" element={<Sleep />} />
+            <Route path="/users" element={<Users />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
