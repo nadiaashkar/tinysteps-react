@@ -59,56 +59,142 @@ function Feeding() {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Feeding Management</h2>
+    <div className="feeding-container">
+      <h2 className="heading">Feeding Management</h2>
 
       {/* Display error message if any */}
-      {error && <p className="text-red-500 mb-4">{error}</p>}
+      {error && <p className="error-message">{error}</p>}
 
       {/* Feeding form */}
-      <div className="mb-4">
+      <div className="form-container">
         <input
           type="time"
           value={feedingTime}
           onChange={(e) => setFeedingTime(e.target.value)}
-          className="border p-2 mb-2"
+          className="input-field"
         />
         <input
           type="number"
           placeholder="Amount (ml)"
           value={feedingAmount}
           onChange={(e) => setFeedingAmount(e.target.value)}
-          className="border p-2 mb-2 ml-2"
+          className="input-field"
         />
         <button
           onClick={isEditing ? handleUpdateFeeding : handleAddFeeding}
-          className={`bg-teal-500 text-white py-2 px-4 rounded ml-2 ${isEditing ? 'bg-blue-500' : ''}`}
+          className={`action-button ${isEditing ? 'update-button' : ''}`}
         >
           {isEditing ? 'Update Feeding' : 'Add Feeding'}
         </button>
       </div>
 
       {/* Feedings list */}
-      <h3 className="text-xl font-semibold mb-2">Feedings List</h3>
-      <ul>
+      <h3 className="list-heading">Feedings List</h3>
+      <ul className="feedings-list">
         {feedings.map((feeding, index) => (
-          <li key={index} className="mb-2">
+          <li key={index} className="feeding-item">
             <strong>{feeding.time}</strong> - {feeding.amount} ml
             <button
               onClick={() => handleDeleteFeeding(index)}
-              className="text-red-500 ml-4"
+              className="delete-button"
             >
               Delete
             </button>
             <button
               onClick={() => handleEditFeeding(index)}
-              className="text-blue-500 ml-2"
+              className="edit-button"
             >
               Edit
             </button>
           </li>
         ))}
       </ul>
+
+      <style jsx>{`
+        .feeding-container {
+          padding: 20px;
+          background-color: #fafafa;
+          border-radius: 10px;
+        }
+
+        .heading {
+          font-size: 2rem;
+          font-weight: bold;
+          margin-bottom: 20px;
+        }
+
+        .error-message {
+          color: red;
+          margin-bottom: 20px;
+        }
+
+        .form-container {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 20px;
+        }
+
+        .input-field {
+          padding: 10px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          width: 100%;
+        }
+
+        .action-button {
+          padding: 10px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .update-button {
+          background-color: #2196F3;
+        }
+
+        .list-heading {
+          font-size: 1.5rem;
+          font-weight: semi-bold;
+          margin-bottom: 10px;
+        }
+
+        .feedings-list {
+          list-style-type: none;
+          padding: 0;
+        }
+
+        .feeding-item {
+          background-color: #f1f1f1;
+          padding: 15px;
+          margin-bottom: 10px;
+          border-radius: 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .delete-button {
+          color: #ff1744;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+
+        .edit-button {
+          color: #1e88e5;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+
+        .delete-button:hover,
+        .edit-button:hover {
+          text-decoration: underline;
+        }
+      `}</style>
     </div>
   );
 }

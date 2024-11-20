@@ -1,33 +1,26 @@
-// src/App.js
-// In App.js
-import AdminHome from './components/AdminHome';  // Correct path to the AdminHome component
-import Feeding from './components/Feeding';  // Correct path to the Feeding component
-import Vaccines from './components/Vaccines';  // Correct path to the Vaccines component
-import Sleep from './components/Sleep';  // Correct path to the Sleep component
-import Users from './components/Users';  // Correct path to the Users component
-import Navbar from './components/Navbar';  // Correct path to the Navbar component
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar'; // Import Navbar
+import UsersPage from './pages/UsersPage';
+import HomePage from './pages/HomePage';
+import RegisterPage from './pages/RegisterPage';
+import FeedingPage from './pages/FeedingPage';
+import SleepingPage from './pages/SleepingPage';
+import VaccinationPage from './pages/VaccinationPage';
 
 function App() {
   return (
     <Router>
-      <div>
-        {/* Navbar displayed on all pages */}
-        <Navbar />
-        <div className="container mx-auto mt-4">
-          <Routes>
-            {/* Home and Admin routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/admin" element={<AdminHome />} />
-
-            {/* Admin management routes */}
-            <Route path="/vaccines" element={<Vaccines />} />
-            <Route path="/feeding" element={<Feeding />} />
-            <Route path="/sleep" element={<Sleep />} />
-            <Route path="/users" element={<Users />} />
-          </Routes>
-        </div>
-      </div>
+      {/* Navbar always visible */}
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/users" element={<UsersPage />} />
+        <Route path="/feeding" element={<FeedingPage />} />
+        <Route path="/sleeping" element={<SleepingPage />} />
+        <Route path="/vaccination" element={<VaccinationPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
     </Router>
   );
 }
