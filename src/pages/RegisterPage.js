@@ -1,61 +1,82 @@
-// src/pages/RegisterPage.js
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState(''); // State for showing errors
+
+  const navigate = useNavigate(); // Initialize navigate hook
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Passwords don't match!");
+      setError("Passwords don't match!"); // Display error message
     } else {
+      setError('');
       // Handle registration logic here
       console.log('Registering with:', { email, password });
+      alert('Registration successful!');
+
+      // Redirect to ParentsPage
+      navigate('/users');
     }
   };
 
   return (
-    <div className="register-container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit} className="register-form">
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="confirm-password">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirm-password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="Confirm your password"
-            required
-          />
-        </div>
-        <button type="submit" className="register-btn">Register</button>
-      </form>
+    <div
+      style={{
+        backgroundImage: `url('https://www.gov.je/Asset%20library/Birth%20banner.jpg?RenditionID=16')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '20px',
+      }}
+    >
+      <div className="register-container">
+        <h2>Register</h2>
+        <form onSubmit={handleSubmit} className="register-form">
+          {error && <p className="error-message">{error}</p>}
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="confirm-password">Confirm Password:</label>
+            <input
+              type="password"
+              id="confirm-password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+          <button type="submit" className="register-btn">Register</button>
+        </form>
+      </div>
 
       {/* Inline CSS */}
       <style>
@@ -64,15 +85,11 @@ const RegisterPage = () => {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             background-color: #f3f4f6;
           }
 
           .register-container {
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -84,6 +101,12 @@ const RegisterPage = () => {
             font-size: 24px;
             color: #4CAF50;
             margin-bottom: 20px;
+          }
+
+          .error-message {
+            color: #f44336; /* Red for errors */
+            font-size: 14px;
+            margin-bottom: 15px;
           }
 
           .form-group {

@@ -2,8 +2,8 @@
 import axios from 'axios';
 
 // Set up a base URL for all API requests
-const api = axios.create({
-  baseURL: 'https://api.yourserver.com', // Replace with your actual API server URL
+export const api = axios.create({
+  baseURL: 'http://localhost:9876/api', // Replace with your actual API server URL
   headers: {
     'Content-Type': 'application/json',
   },
@@ -22,6 +22,11 @@ api.interceptors.request.use(
 );
 
 // API Request Functions
+
+export const loginUser = async (email, password) => {
+  const res = await api.post('/parent/login',  {email, password})
+  console.log(res)
+}
 
 // Fetch user data
 export const fetchUserData = async (userId) => {

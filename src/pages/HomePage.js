@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { login } from './../services/Auth';
 
 const HomePage = () => {
   const [email, setEmail] = useState('');
@@ -7,8 +8,7 @@ const HomePage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log('Logging in with:', { email, password });
-    // Add login logic here
+    login(email, password);
   };
 
   return (
@@ -78,17 +78,18 @@ const HomePage = () => {
           }
 
           .header {
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            background-color: rgba(255, 239, 239, 0.8); /* Soft pink background */
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 15px;
             margin-bottom: 20px;
             max-width: 600px;
             text-align: center;
           }
 
           .header h1 {
-            color: #4CAF50;
+            color: #ff88a5; /* Baby pink */
             font-size: 2.5rem;
+            font-family: 'Comic Sans MS', cursive;
           }
 
           .header p {
@@ -97,17 +98,18 @@ const HomePage = () => {
           }
 
           .login-section {
-            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
-            padding: 20px;
-            border-radius: 8px;
+            background-color: rgba(255, 239, 239, 0.9); /* Semi-transparent pink */
+            padding: 25px;
+            border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
           }
 
           .login-section h2 {
-            color: #4CAF50;
+            color: #ff88a5; /* Baby pink */
             margin-bottom: 20px;
+            font-family: 'Comic Sans MS', cursive;
           }
 
           .form-group {
@@ -126,29 +128,30 @@ const HomePage = () => {
             width: 100%;
             padding: 10px;
             font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 1px solid #ff88a5; /* Pink border */
+            border-radius: 10px;
           }
 
           .form-group input:focus {
-            border-color: #2196F3; /* Blue border on focus */
+            border-color: #ffcccb; /* Lighter pink on focus */
             outline: none;
           }
 
           .login-btn {
             width: 100%;
             padding: 12px;
-            background-color: #2196F3; /* Blue button */
+            background-color: #ff88a5; /* Pink button */
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-family: 'Comic Sans MS', cursive;
           }
 
           .login-btn:hover {
-            background-color: #1976D2; /* Darker blue on hover */
+            background-color: #ffcccb; /* Lighter pink on hover */
           }
 
           .register-prompt {
@@ -158,7 +161,7 @@ const HomePage = () => {
           }
 
           .register-link {
-            color: #2196F3;
+            color: #ff88a5;
             font-weight: bold;
             text-decoration: none;
           }
