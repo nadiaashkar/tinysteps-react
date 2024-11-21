@@ -12,6 +12,9 @@ const Navbar = () => {
           <Link to="/Babies" className="navbar-link">Babies</Link>
         </li>
         <li>
+        <Link to="/Sleep" className="navbar-link">Sleep</Link>
+        </li>
+        <li>
           <Link to="/Parents" className="navbar-link">Parents</Link>
         </li>
         <li>

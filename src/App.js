@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import ParentsPage from './pages/ParentsPage';
+import FeedPage from './pages/FeedPage';
+import SleepPage from './pages/SleepPage';
 import HomePage from './pages/HomePage';
-import RegisterPage from './pages/RegisterPage';
+import BabiesPage from './pages/BabiesPage';
+import ParentsPage from './pages/ParentsPage';
 import VaccinationPage from './pages/VaccinationPage';
-import Babypage from './pages/BabyPage';
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/users" element={<ParentsPage />} />
+        <Route path="/Babies" element={<BabiesPage />} />
+        <Route path="/Parents" element={<ParentsPage />} />
         <Route path="/vaccination" element={<VaccinationPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/baby" element={<Babypage />} /> {/* Correct route */}
+        <Route path="/feed" element={<FeedPage />} />
+        <Route path="/sleep" element={<SleepPage />} />
       </Routes>
     </Router>
   );
