@@ -28,6 +28,11 @@ export const loginUser = async (email, password) => {
   console.log(res)
 }
 
+export const loginAdmin = async (email, password) => {
+  const res = await api.post('/admin/login',  {email, password})
+  console.log(res)
+}
+
 // Fetch user data
 export const fetchUserData = async (userId) => {
   try {
